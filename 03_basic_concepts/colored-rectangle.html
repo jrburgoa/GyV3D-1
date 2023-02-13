@@ -68,6 +68,7 @@
             -0.6, 0.6, 0.0, // 1
             0.6, 0.6, 0.0, // 2
             0.6, -0.6, 0.0, // 3
+            0, 0.8 , 1.0 //4
         ]);
         gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
         gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
@@ -81,6 +82,7 @@
             0.0, 1.0, 0.0,
             0.0, 0.0, 1.0,
             1.0, 0.0, 1.0,
+            1.0, 1.0, 1.0
         ]);
         gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
         gl.bufferData(gl.ARRAY_BUFFER, colors, gl.STATIC_DRAW);
@@ -92,6 +94,7 @@
         var indices = new Uint16Array([
             0, 1, 2,
             0, 2, 3,
+            1, 2, 4
         ]);
         gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, gl.createBuffer());
         gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indices, gl.STATIC_DRAW);
