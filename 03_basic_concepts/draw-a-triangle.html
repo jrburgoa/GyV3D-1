@@ -48,14 +48,38 @@
             console.log('Failed to set the positions of the vertices');
             return;
         }
+        
+        // Register event handler
+canvas.onmousedown = function(ev) {
+click(ev, gl, canvas);
+}
 
-        // Clear canvas
-        gl.clearColor(0.0, 0.0, 1.0, 1.0);
+function click(ev, gl, canvas) {
+// Coordinates of canvas origin
+var rect = ev.target.getBoundingClientRect();
+// relative x coordinate of click in canvas
+var clickX = ev.clientX - rect.left;
+// relative y coordinate of click in canvas
+var clickY = ev.clientY - rect.top;
+// WebGL coordinates (3D)
+var halfCanvasWidth = canvas.width / 2;
+var halfCanvasHeight = canvas.height / 2;
+var x = (clickX - halfCanvasWidth) / halfCanvasWidth;
+var y = (halfCanvasHeight - clickY) / halfCanvasHeight;
+var xyz = [x, y, 0];
+console.log(xyz)
+triangulos.push(xyz)
+console.log(triangulos)
+// ...
+ // Clear canvas
+ gl.clearColor(0.0, 0.0, 1.0, 1.0);
         gl.clear(gl.COLOR_BUFFER_BIT);
 
         // Draw
         gl.drawArrays(gl.TRIANGLES, 0, n);
-    }
+}
+       
+}
 
     function initVertexBuffers(gl) {
         // Vertices
