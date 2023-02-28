@@ -1,0 +1,67 @@
+<!DOCTYPE html><html>
+<head>
+<script src="/shared/webgl-library.js"></script>
+<script>
+var VS_SOURCE=`
+   attribute vec4 p;
+   void main(){
+      gl_Position = p; 
+      gl_PointSize=30.0;
+   }`;
+var FS_SOURCE=`
+   precision mediump float;
+   uniform vec4 c;
+   void main(){
+      gl_FragColor=c;
+   }`;
+
+var n=0;
+var points=new Array();
+
+function initialize_webgl(){
+   var canvas = document.getElementById("myCanvas");
+   var gl = canvas.getContext("webgl");
+   initShaders(gl,VS_SOURCE,FS_SOURCE);
+   gl.clearColor(0.0,0.0,0.0,1.0);
+   gl.clear(gl.COLOR_BUFFER_BIT);
+   canvas.onclick=function(ev){draw_point(ev,canvas,gl);};
+}
+function draw_point(ev,canvas,gl){
+   // Stores the locations of the mouse click in points[]
+   var Clickx=ev.clientX;
+   var Clicky=ev.clientY;
+   var rect=ev.target.getBoundingClientRect();
+   var halfCanvasWidth = canvas.width / 2;
+var halfCanvasHeight = canvas.height / 2;
+var x = (clickX - halfCanvasWidth) / halfCanvasWidth;
+var y = (halfCanvasHeight - clickY) / halfCanvasHeight;
+   points.push(x);
+   points.push(y);
+   n++;
+	
+   // Use a buffer object to pass points[] to the attribute p
+   var pL=gl.getAttribLocation(gl.program, 'p');
+   if (pL<0) alert("Failed to get the location of p");
+   var b=gl.createBuffer();
+   gl.bindBuffer(gl.ARRAY_BUFFER,b);
+   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(points),gl.STATIC_DRAW);
+   gl.vertexAttribPointer(pL,2,gl.FLOAT,false,0,0);
+   gl.enableVertexAttribArray(pL);
+	
+   // Specifies the pixel/fragment color
+   var cA=[1.0,0.0,0.0,1.0];
+   var cL=gl.getUniformLocation(gl.program,'c');
+   if (cL<0) alert("Failed to get the location of c");
+   gl.uniform4fv(cL,cA);
+   
+   gl.clearColor(0.0,0.0,0.0,1.0);
+   gl.clear(gl.COLOR_BUFFER_BIT);
+   gl.drawArrays(gl.TRIANGLES,0,n);  // draws n points
+   gl.deleteBuffer(b); // frees the memory
+}</script>
+</head>
+
+<body onload="initialize_webgl()">
+   <canvas id="myCanvas" width="500" height="500"></canvas>
+</body>
+</html>
