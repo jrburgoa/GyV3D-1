@@ -1,0 +1,65 @@
+var dim = 3;
+        var vertices = new Float32Array([
+            0, 0.85, 0,   // Vertice #1
+            -0.3, 0.55, 0,   // Vertice #2
+            0.3, 0.55, 0,  // Vertice #3
+
+            0, 0.5, 0,    // Vertice #1
+            -0.5, 0.00, 0,   // Vertice #2
+            0.5, 0.00, 0,  // Vertice #3
+
+            0.15, -0.3, 0,    // Vertice #1 RECTANGULO
+            -0.15, -0.7, 0,   // Vertice #2
+            -0.15, -0.3, 0,  // Vertice #3
+
+            -0.15, -0.7, 0,    // Vertice #1
+            0.15, -0.7, 0,   // Vertice #2
+            0.15, -0.3, 0,  // Vertice #3
+        ]);
+        dim = 3
+        var vertices2 = new Float32Array([
+
+            0, 0.65, 0,    // Vertice #1
+            -0.4, 0.3, 0,   // Vertice #2
+            0.4, 0.3, 0,  // Vertice #3
+
+            0, 0.2, 0,    // Vertice #1
+            -0.65, -0.3, 0,   // Vertice #2
+            0.65, -0.3, 0,  // Vertice #3
+        ]);
+
+
+
+        var dim = 3;
+        var vertices = new Float32Array([
+            0, 0.85, 0,   // Vertice #1
+            -0.3, 0.55, 0,   // Vertice #2
+            0.3, 0.55, 0,  // Vertice #3
+
+            0, 0.65, 0,    // Vertice #1
+            -0.4, 0.3, 0,   // Vertice #2
+            0.4, 0.3, 0,  // Vertice #3
+
+            0, 0.5, 0,    // Vertice #1
+            -0.5, 0.00, 0,   // Vertice #2
+            0.5, 0.00, 0,  // Vertice #3
+
+            0, 0.2, 0,    // Vertice #1
+            -0.65, -0.3, 0,   // Vertice #2
+            0.65, -0.3, 0,  // Vertice #3
+
+            0.15, -0.3, 0,    // Vertice #1 RECTANGULO
+            -0.15, -0.7, 0,   // Vertice #2
+            -0.15, -0.3, 0,  // Vertice #3
+
+            -0.15, -0.7, 0,    // Vertice #1
+            0.15, -0.7, 0,   // Vertice #2
+            0.15, -0.3, 0,  // Vertice #3
+        ]);
+        dim = 3
+        var vertices2 = new Float32Array([
+
+            
+
+            
+        ]);
